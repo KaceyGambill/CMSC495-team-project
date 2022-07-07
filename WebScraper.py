@@ -3,7 +3,7 @@ import requests
 
 
 def main():
-    url = "https://www.dice.com/jobs?q=software%20engineering&countryCode=US&radius=30&radiusUnit=mi&page=1&pageSize=20&language=en&eid=S2Q_"
+    url = "https://www.linkedin.com/jobs/search/?geoId=107024810&keywords=software%20engineer&location=Everett%2C%20Washington%2C%20United%20States"
     r = requests.get(url)
     soup = BeautifulSoup(r.content, 'html.parser')
     for link in soup.find_all('a'):
@@ -25,8 +25,6 @@ def scrape_url(url: str) -> dict:
         if str(link_href).startswith('http'):
             dict_of_results['links'].append(link_href)
     return dict_of_results
-
-
 
 if __name__ == "__main__":
     main()

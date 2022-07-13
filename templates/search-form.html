@@ -1,0 +1,11 @@
+<form action="http://127.0.0.1:5000/{{ url }}" method="POST">
+  <div class="form-group">
+    <label for="link">Link to parse</label>
+		<select name="link" class="form-control">
+		  {% for value in options %}	
+			<option>{{ value }}</option>
+			{% endfor %}
+		</select>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

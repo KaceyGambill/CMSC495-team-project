@@ -12,8 +12,13 @@
 
 <body>
 {% include "header.html" %}
+{% if request != 'GET' %}
   <p class="h3">Job Sites</p> 
 {% include "table.html" %}
+{% endif %}
+{% if request == 'GET' %}
+{% include "search-form.html" %}
+{% endif %}
 {% include "footer.html" %}
 </body>
 </html>

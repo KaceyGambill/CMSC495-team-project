@@ -7,17 +7,6 @@ from urllib.request import Request, urlopen
 from urllib3.util import url
 
 
-# This is the child tag
-def browse_scrape(scrape_url, page_number=1):
-    print('This should print the paragraph \n')
-    url1 = "https://arc.dev/resume"
-    r = requests.get(url1)
-    soup = BeautifulSoup(r.content, 'html.parser')
-    #  title_tag = soup.title
-    title_tag.parent
-    # print(soup.parent)
-
-
 # This block scrapes the text from a resume article
 def text():
     print('This should print the paragraph \n')

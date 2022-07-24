@@ -1,12 +1,45 @@
+import re
+from urllib.request import urlopen
+
 from bs4 import BeautifulSoup
 import requests
+from urllib.request import Request, urlopen
+from urllib3.util import url
 
 
-def main():
-    url = "https://www.linkedin.com/jobs/search/?geoId=107024810&keywords=software%20engineer&location=Everett%2C%20Washington%2C%20United%20States"
-    r = requests.get(url)
+# This is the child tag
+def browse_scrape(scrape_url, page_number=1):
+    print('This should print the paragraph \n')
+    url1 = "https://arc.dev/resume"
+    r = requests.get(url1)
     soup = BeautifulSoup(r.content, 'html.parser')
-    for link in soup.find_all('a'):
+    #  title_tag = soup.title
+    title_tag.parent
+    # print(soup.parent)
+
+
+# This block scrapes the text from a resume article
+def text():
+    print('This should print the paragraph \n')
+    url1 = "https://arc.dev/resume"
+    r = requests.get(url1)
+    textsoup = BeautifulSoup(r.content, 'html.parser')
+    title_text = textsoup.find_all("title")
+    print(textsoup.title.prettify())
+    for text in textsoup.find_all('p'):
+        print(text.get_text())
+
+
+# This block scrapes links for resumes
+def links():
+    print("\n here on out should be links\n")
+    url2 = "https://www.freecodecamp.org/news/tag/resume/"
+    r = requests.get(url2)
+    linksoup = BeautifulSoup(r.content, 'html.parser')
+    print(linksoup.a.prettify())
+    # print(linksoup.find_all('a'))
+    print("Here are other links and resources for building a resume: \n")
+    for link in linksoup.find_all('a'):
         print(link.get('href'))
 
 def scrape_url(url: str) -> dict:
@@ -25,6 +58,11 @@ def scrape_url(url: str) -> dict:
         if str(link_href).startswith('http'):
             dict_of_results['links'].append(link_href)
     return dict_of_results
+
+def main():
+    text()
+    links()
+
 
 if __name__ == "__main__":
     main()

@@ -7,18 +7,6 @@ from urllib.request import Request, urlopen
 from urllib3.util import url
 
 
-# This is the child tag
-def browse_scrape(scrape_url, page_number=1):
-    print('This should print the paragraph \n')
-    url1 = "https://arc.dev/resume"
-    r = requests.get(url1)
-    soup = BeautifulSoup(r.content, 'html.parser')
-  #  title_tag = soup.title
-    title_tag.parent
-    #print(soup.parent)
-
-
-
 # This block scrapes the text from a resume article
 def text():
     print('This should print the paragraph \n')
@@ -33,13 +21,13 @@ def text():
 
 # This block scrapes links for resumes
 def links():
-    print("\n here on out should be links\n")
+    print("\n Useful Resume tip resources: \n")
     url2 = "https://www.freecodecamp.org/news/tag/resume/"
     r = requests.get(url2)
     linksoup = BeautifulSoup(r.content, 'html.parser')
     print(linksoup.a.prettify())
     for link in linksoup.find_all('a'):
-       # print(link.get('href'))
+        print(link.get('href'))
 
 
 
@@ -50,3 +38,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    re

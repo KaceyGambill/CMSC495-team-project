@@ -27,28 +27,52 @@ def scrape_url(url: str) -> dict:
             dict_of_results['links'].append(link_href)
     return dict_of_results
 
+# This block scrapes links for resumes
+def links(url: str):
+    text_dict = {
+            "site": [
+                ]
+            }
+    r = requests.get(url)
+    linksoup = BeautifulSoup(r.content, 'html.parser')
+##    print(linksoup.a.prettify())
+    for link_index, link in enumerate(linksoup.find_all('a')):
+        # set limit at 100 so it doesn't take forever
+        if link_index == 100:
+            break
+        link_href = link.get('href')
+        if str(link_href).startswith('http'):
+#            print(link_href)
+            try:
+                text_dict_info = text(link_href)
+                text_dict['site'].append(text_dict_info)
+            except:
+                print('did not scrape')
+    return text_dict['site']
+
 # This block scrapes the text from a resume article
-def text():
-    print('This should print the paragraph \n')
-    url1 = "https://arc.dev/resume"
-    r = requests.get(url1)
+def text(url: str) -> dict:
+    r = requests.get(url)
     textsoup = BeautifulSoup(r.content, 'html.parser')
     title_text = textsoup.find_all("title")
-    print(textsoup.title.prettify())
-    for text in textsoup.find_all('p'):
-        print(text.get_text())
 
 
-# This block scrapes links for resumes
-def links():
-    print("\n Useful Resume tip resources: \n")
-    url2 = "https://www.freecodecamp.org/news/tag/resume/"
-    r = requests.get(url2)
-    linksoup = BeautifulSoup(r.content, 'html.parser')
-    print(linksoup.a.prettify())
-    for link in linksoup.find_all('a'):
-        print(link.get('href'))
+#    print(textsoup.title.prettify())
+    try:
+        text_dict_info = {
+                "url": url,
+                "title": title_text
+                }
+#        print(f'url: {url}')
+#        print(f'title: {title_text}')
+#        print(text.get_text())
+    except:
+        print('no info found')
+    return text_dict_info
 
 
 if __name__ == "__main__":
-    main()
+##    main()
+##    text("https://arc.dev/resume")
+    links("https://www.freecodecamp.org/news/tag/resume")
+##    text("https://www.freecodecamp.org/news/rtc-connecting-discord-how-to-fix-the-server-error/")

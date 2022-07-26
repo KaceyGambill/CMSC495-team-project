@@ -27,7 +27,7 @@ def scrape_url(url: str) -> dict:
             dict_of_results['links'].append(link_href)
     return dict_of_results
 
-# This block scrapes links for resumes
+# This block scrapes links
 def links(url: str):
     text_dict = {
             "site": [
@@ -50,7 +50,7 @@ def links(url: str):
                 print('did not scrape')
     return text_dict['site']
 
-# This block scrapes the text from a resume article
+# This block scrapes the text
 def text(url: str) -> dict:
     r = requests.get(url)
     textsoup = BeautifulSoup(r.content, 'html.parser')
@@ -65,16 +65,11 @@ def text(url: str) -> dict:
                 "title": title_text,
                 "p": text_body
                 }
-#        print(f'url: {url}')
-#        print(f'title: {title_text}')
-#        print(text.get_text())
+
     except:
         print('no info found')
     return text_dict_info
 
 
 if __name__ == "__main__":
-##    main()
-##    text("https://arc.dev/resume")
     links("https://www.freecodecamp.org/news/tag/resume")
-##    text("https://www.freecodecamp.org/news/rtc-connecting-discord-how-to-fix-the-server-error/")

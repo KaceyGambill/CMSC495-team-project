@@ -46,17 +46,15 @@ def resume_help():
     if request.method == 'GET':
         # array of sites to search for information
         options = ["https://www.freecodecamp.org/news/tag/resume"]
-        return render_template('resume.html',request='GET', url='resume', options=options)
+        return render_template(
+                'resume.html',
+                request='GET',
+                url='resume',
+                options=options
+                )
     if request.method == 'POST':
         result = request.form['link']
-        resume_results = WebScraper.links(result)
-        url_list = []
-        title_list = []
-        for item in resume_results:
-            url_list.append(item['url'])
-            title_list.append(item['title'])
-            print(f"URL : {item['url']}")
-
+        resume_results  = WebScraper.links(result)
         return render_template(
                 'resume.html',
                 url = '/resume',
@@ -70,12 +68,22 @@ def resume_help():
 def interview_tips():
     if request.method == 'GET':
         # array of sites to search for information
-        options = ['https://www.dice.com/jobs?q=software%20engineering&countryCode=US&radius=30&radiusUnit=mi&page=1&pageSize=20&language=en&eid=S2Q_', 'https://www.linkedin.com/jobs/search/?geoId=107024810&keywords=software%20engineer&location=Everett%2C%20Washington%2C%20United%20States']
-        return render_template('interview.html',request='GET', url='interview', options=options)
+        options = ["https://www.freecodecamp.org/news/tag/interview"]
+        return render_template(
+                'interview.html',
+                request='GET',
+                url='interview',
+                options=options
+                )
     if request.method == 'POST':
         result = request.form['link']
-        interview_results = WebScraper.scrape_url(result)
-        return render_template('interview.html', url = '/interview', table_header=interview_results['scrape_site'], table_data=interview_results['links'])
+        interview_results  = WebScraper.links(result)
+        return render_template(
+                'interview.html',
+                url = '/interview',
+                table_header="Interview Tips",
+                table_data=interview_results
+                )
 
 
 if __name__ == '__main__':

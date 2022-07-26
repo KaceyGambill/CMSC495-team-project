@@ -55,13 +55,15 @@ def text(url: str) -> dict:
     r = requests.get(url)
     textsoup = BeautifulSoup(r.content, 'html.parser')
     title_text = textsoup.find_all("title")
+    text_body = textsoup.find_all('p')
 
 
 #    print(textsoup.title.prettify())
     try:
         text_dict_info = {
                 "url": url,
-                "title": title_text
+                "title": title_text,
+                "p": text_body
                 }
 #        print(f'url: {url}')
 #        print(f'title: {title_text}')

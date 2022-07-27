@@ -35,14 +35,12 @@ def links(url: str):
             }
     r = requests.get(url)
     linksoup = BeautifulSoup(r.content, 'html.parser')
-##    print(linksoup.a.prettify())
     for link_index, link in enumerate(linksoup.find_all('a')):
         # set limit at 100 so it doesn't take forever
         if link_index == 100:
             break
         link_href = link.get('href')
         if str(link_href).startswith('http'):
-#            print(link_href)
             try:
                 text_dict_info = text(link_href)
                 text_dict['site'].append(text_dict_info)

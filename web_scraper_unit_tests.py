@@ -28,11 +28,4 @@ class WebScraperTests(unittest.TestCase):
         performance_time = start - end
         self.assertLess(performance_time, .01, 'Test failed because it took too long')
 
-    # Test scrape_url function for perfomance
-    def test_scrape_url_dict_not_empty_performance(self):
-        start = time.time()
-        WebScraper.test_scrape_url_dict_not_empty()
-        end = time.time()
-        performance_time = start - end
-        self.assertLess(performance_time, .01, 'Test failed because it took too long')
 

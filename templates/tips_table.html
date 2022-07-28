@@ -1,16 +1,16 @@
-<table class="table">
-  <thead>
-    <tr>
+<table class="table table-bordered">
+	<thead>
+		<tr>
 			<th scope="col">url</th>
 			<th scope="col">{{table_header}}</th>
 		</tr>
-  </thead>
-  <tbody>
+	</thead>
+	<tbody>
 		{% for item in table_data %}
-    <tr>
+		<tr>
 			<th scope="row">{{item['url']}}</th>
 			<td>{{item['p']}}</td>
 		</tr>
 		{% endfor %}
-  </tbody>
+	</tbody>
 </table>

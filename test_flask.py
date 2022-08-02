@@ -4,6 +4,7 @@ from flask import current_app
 import time
 from app import app
 
+
 # Create client and app contexts for testing flask
 # Functions
 @pytest.fixture
@@ -18,9 +19,9 @@ def test_index_page(client):
    response = client.get('/')
 
    assert response.status_code == 200
-   assert b'Welcome!' in response.data
 
-# Test flask app index page function performance
+
+#Test flask app index page function performance
 def test_index_page_performance(client):
     start = time.time()
     response = client.get('/')
@@ -84,3 +85,9 @@ def test_interview_page_performance(client):
         print(response)
     total_time = stop - start
     print(f"Total time to execute interview_page function was {total_time}")
+
+
+
+
+
+

@@ -1,0 +1,12 @@
+@import 'bootstrap.css';
+
+body {
+    background-color: #65b0b2;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.description {
+    width: 780px;
+    height: 50px;
+    padding: 5px;
+}

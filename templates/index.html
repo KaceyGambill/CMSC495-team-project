@@ -1,20 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-		{% include "links.html" %}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  {% include "links.html" %}
 
 
 </head>
 
 <body>
-{% include "header.html" %}
-<h1>CMSC-495 Job Prep</h1>
-<p>This websites purpose is to provide others with information to help them in their search for a job</p>
-    
-{% include "footer.html" %}
+  {% include "header.html" %}
+  <h1 class="test" style="-webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;">CMSC-495 Job Prep</h1>
+  <p class="description">This websites purpose is to provide others with information to help them in their search for a
+    job.
+    We offer multiple resources and links to helpful tips on resume bulding, interview assistance
+    and job findings based on what the user is looking for.
+  </p>
+  <br />
+  <div class="container ">
+    <div class="row d-flex">
+
+      <div class="card mr-5 bg-dark text-light" style="width: 20rem; height: 20rem;">
+        <div class="card-body">
+          <h5 class="card-title"><u>Resume Tips</u></h5>
+          <p class="card-text"> This link will provide resources relating to resume tips that will help to build and
+            layout your resume based on the search input of the career field you are looking for.
+          </p>
+          <a href="http://127.0.0.1:5000/resume" class="card-link">Go to Resume Tips</a>
+        </div>
+      </div>
+
+      <div class="card mr-5 bg-dark text-light" style="width: 20rem; height: 20rem;">
+        <div class="card-body">
+          <h5 class="card-title"><u>Interview Tips</u></h5>
+          <p class="card-text">This link will provide resources relating to interview tips and resources that will help
+            to best prepare you for the different types of questions and interview processes based on the search input
+            of
+            the career field you are looking for.</p>
+          <a href="http://127.0.0.1:5000/interview" class="card-link">Go to Interview Tips</a>
+        </div>
+      </div>
+
+      <div class="card bg-dark text-light" style="width: 20rem; height: 20rem;">
+        <div class="card-body">
+          <h5 class="card-title"><u>Job links</u></h5>
+          <p class="card-text">This link will provide resources relating to job findings and opportunites based on the
+            career field you have input.</p>
+          <a href="http://127.0.0.1:5000/jobs" class="card-link">Go to Job links</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  {% include "footer.html" %}
 </body>
+
 </html>

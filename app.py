@@ -62,7 +62,6 @@ def resume_help():
                 table_data=resume_results
                 )
 
-
 # Establish route for Interview Tips page
 @app.route("/interview", methods = ['POST', 'GET'])
 def interview_tips():

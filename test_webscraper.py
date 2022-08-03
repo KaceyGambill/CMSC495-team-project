@@ -6,20 +6,20 @@ link = "https://www.linkedin.com/jobs/search/?geoId=107024810&keywords=software%
 
 ##########****** Functional tests ******#############
 
-# # Test scrape_url function
-# def test_scrape_url_type():
-#     scrape_test = WebScraper.scrape_url(link)
-#     assert type(scrape_test) == dict
-#
-# # Test scrape_url function
-# def test_scrape_url_dict_not_empty():
-#     scrape_test = WebScraper.scrape_url(link)
-#     assert len(scrape_test) != 0
-#
-# # Test text function for return type
-# def test_text_function_for_return_type():
-#     text_test_value = WebScraper.text(link)
-#     assert type(text_test_value) == dict
+# Test scrape_url function
+def test_scrape_url_type():
+    scrape_test = WebScraper.scrape_url(link)
+    assert type(scrape_test) == dict
+
+# Test scrape_url function
+def test_scrape_url_dict_not_empty():
+    scrape_test = WebScraper.scrape_url(link)
+    assert len(scrape_test) != 0
+
+# Test text function for return type
+def test_text_function_for_return_type():
+    text_test_value = WebScraper.text(link)
+    assert type(text_test_value) == dict
 
 ##########****** Performance tests ******#############
 

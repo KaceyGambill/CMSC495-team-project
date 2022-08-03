@@ -55,14 +55,19 @@ def text(url: str) -> dict:
     title_text = textsoup.find_all("title")
     text_body = textsoup.find_all('p')
 
-
-#    print(textsoup.title.prettify())
     try:
         text_dict_info = {
                 "url": url,
                 "title": title_text,
                 "p": text_body
                 }
+        new_string = ""
+        for i in text_body:
+            for j in i:
+                for k in j:
+                    new_string += str(k)
+
+        text_dict_info["p"] = new_string
 
     except:
         print('no info found')

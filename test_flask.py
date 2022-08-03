@@ -16,31 +16,31 @@ def client():
 
 ##########****** Functional tests ******#############
 
-# # Test flask app index page function
-# def test_index_page(client):
-#    response = client.get('/')
-#    assert response.status_code == 200
-#
-# # Test flask app jobs page function
-# def test_jobs_page(client):
-#    response = client.get('/jobs')
-#
-#    assert response.status_code == 200
-#    assert b'jobs' in response.data
-#
-# # Test flask app resume page function
-# def test_resume_page(client):
-#    response = client.get('/resume')
-#
-#    assert response.status_code == 200
-#    assert b'resume' in response.data
-#
-# # Test flask app interview page function
-# def test_interview_page(client):
-#    response = client.get('/interview')
-#
-#    assert response.status_code == 200
-#    assert b'interview' in response.data
+# Test flask app index page function
+def test_index_page(client):
+   response = client.get('/')
+   assert response.status_code == 200
+
+# Test flask app jobs page function
+def test_jobs_page(client):
+   response = client.get('/jobs')
+
+   assert response.status_code == 200
+   assert b'jobs' in response.data
+
+# Test flask app resume page function
+def test_resume_page(client):
+   response = client.get('/resume')
+
+   assert response.status_code == 200
+   assert b'resume' in response.data
+
+# Test flask app interview page function
+def test_interview_page(client):
+   response = client.get('/interview')
+
+   assert response.status_code == 200
+   assert b'interview' in response.data
 
 ##########****** Performance tests ******#############
 

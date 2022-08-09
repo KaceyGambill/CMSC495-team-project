@@ -33,11 +33,20 @@ def job_search():
     if request.method == 'GET':
         # array of sites to search for information
         options = ['https://www.dice.com/jobs?q=software%20engineering&countryCode=US&radius=30&radiusUnit=mi&page=1&pageSize=20&language=en&eid=S2Q_', 'https://www.linkedin.com/jobs/search/?geoId=107024810&keywords=software%20engineer&location=Everett%2C%20Washington%2C%20United%20States']
-        return render_template('jobs.html',request='GET', url='jobs', options=options)
+        return render_template(
+                'jobs.html',
+                request='GET',
+                url='jobs',
+                options=options
+                )
     if request.method == 'POST':
         result = request.form['link']
         job_results = WebScraper.scrape_url(result)
-        return render_template('jobs.html', table_header=job_results['scrape_site'], table_data=job_results['links'])
+        return render_template(
+                'jobs.html',
+                table_header=job_results['scrape_site'],
+                table_data=job_results['links']
+                )
 
 
 # Establish route for Resume Results page
@@ -54,7 +63,7 @@ def resume_help():
                 )
     if request.method == 'POST':
         result = request.form['link']
-        resume_results  = WebScraper.links(result)
+        resume_results  = WebScraper.get_links(result)
         return render_template(
                 'resume.html',
                 url = '/resume',
@@ -76,7 +85,7 @@ def interview_tips():
                 )
     if request.method == 'POST':
         result = request.form['link']
-        interview_results  = WebScraper.links(result)
+        interview_results  = WebScraper.get_links(result)
         return render_template(
                 'interview.html',
                 url = '/interview',
@@ -87,4 +96,5 @@ def interview_tips():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
 

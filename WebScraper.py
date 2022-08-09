@@ -1,6 +1,5 @@
 from bs4 import BeautifulSoup
 import requests
-from urllib.request import Request, urlopen
 from urllib3.util import url
 
 def main():
@@ -48,8 +47,29 @@ def links(url: str):
                 print('did not scrape')
     return text_dict['site']
 
+def get_links(url=None):
+    if url is None:
+        url = 'https://www.freecodecamp.org/news/tag/resume/'
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"}
+    reqs = requests.get(url, headers=headers)
+    soup = BeautifulSoup(reqs.content, 'html.parser')
+    links = soup.findAll('h2', {'class': 'post-card-title'})
+
+    links_list = []
+    text_list = []
+
+    for p in links:
+        try:
+            a = p.find('a')['href']
+        except:
+            continue
+        else:
+            links_list.append(a)
+    return links_list
+
 # This block scrapes the text
-def text(url: str) -> dict:
+def text() -> dict:
     r = requests.get(url)
     textsoup = BeautifulSoup(r.content, 'html.parser')
     title_text = textsoup.find_all("title")
